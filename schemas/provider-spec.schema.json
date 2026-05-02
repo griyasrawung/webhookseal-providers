@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/webhookseal/webhookseal-providers/schemas/provider-spec.schema.json",
+  "title": "WebhookSeal Provider Spec",
+  "description": "Schema for webhook provider signature verification specifications.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "spec_version",
+    "provider_id",
+    "display_name",
+    "algorithm",
+    "signature_header",
+    "signature_prefix",
+    "signature_encoding",
+    "timestamp_header",
+    "timestamp_format",
+    "timestamp_location",
+    "payload_construction",
+    "payload_template",
+    "replay_window_seconds",
+    "source_docs",
+    "notes"
+  ],
+  "properties": {
+    "spec_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "provider_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "display_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "algorithm": {
+      "type": "string",
+      "enum": ["hmac-sha256", "hmac-sha1", "hmac-sha512"]
+    },
+    "signature_header": {
+      "type": "string",
+      "minLength": 1
+    },
+    "signature_prefix": {
+      "type": ["string", "null"]
+    },
+    "signature_encoding": {
+      "type": "string",
+      "enum": ["hex", "base64"]
+    },
+    "timestamp_header": {
+      "type": ["string", "null"]
+    },
+    "timestamp_format": {
+      "type": ["string", "null"],
+      "enum": ["epoch_seconds", "epoch_ms", "iso8601", "embedded", null]
+    },
+    "timestamp_location": {
+      "type": ["string", "null"],
+      "enum": ["separate_header", "embedded_in_signature", null]
+    },
+    "payload_construction": {
+      "type": "string",
+      "enum": ["raw_body", "json_canonical", "custom"]
+    },
+    "payload_template": {
+      "type": ["string", "null"]
+    },
+    "replay_window_seconds": {
+      "type": ["integer", "null"],
+      "minimum": 0
+    },
+    "source_docs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["url", "retrieved_date"],
+        "properties": {
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "retrieved_date": {
+            "type": "string",
+            "format": "date"
+          }
+        }
+      }
+    },
+    "notes": {
+      "type": "string"
+    },
+    "signature_parse_pattern": {
+      "type": "string"
+    },
+    "timestamp_parse_pattern": {
+      "type": "string"
+    },
+    "multiple_signatures": {
+      "type": "boolean",
+      "default": false
+    },
+    "extra_headers": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "extensions": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  }
+}
