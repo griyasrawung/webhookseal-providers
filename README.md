@@ -147,9 +147,6 @@ Secret handling expectations:
 - Only non-sensitive sample values are allowed for test data.
 - Secret lifecycle/operations are outside this repository scope.
 
-Version baseline:
-- `webhookseal-providers v0.1.0-beta.1`
-
 ## Contributing
 
 See `CONTRIBUTING.md` for contribution workflow, validation checks, and review expectations.
