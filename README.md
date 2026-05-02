@@ -36,6 +36,25 @@ Expected flow:
 3. Run deterministic fixtures.
 4. Run full lint checks.
 
+## CI/local verification commands
+
+Run from `webhookseal-providers/`:
+
+```bash
+go test ./... -v
+go run ./cmd/webhookseal validate-schema --all
+go run ./cmd/webhookseal run-fixtures --all
+go run ./cmd/webhookseal lint --all --strict
+go build -o webhookseal ./cmd/webhookseal
+```
+
+Expected passing outcome:
+- All commands exit `0`.
+- `go test ./... -v` ends with `PASS`.
+- Validation/lint commands print success summaries without errors.
+
+CI uses `go test ./... -v -race -coverprofile=coverage.txt`; local `-race` is optional and not required in this environment.
+
 ## Provider spec format summary
 
 Provider specs live in `providers/*.yaml` and must conform to `schemas/provider-spec.schema.json`.
@@ -109,6 +128,27 @@ Use `-h` on the root command or any subcommand for the current flag set:
 go run ./cmd/webhookseal -h
 go run ./cmd/webhookseal lint -h
 ```
+
+## Open-core boundary and secret handling
+
+`webhookseal-providers` is an open provider-registry repository. It contains provider signing specifications, validation schema, and deterministic fixtures.
+
+What this repository includes:
+- Open provider definitions and fixture data.
+- Validation and lint tooling for provider rule quality.
+
+What this repository does not include:
+- Any proprietary/closed service deployment layer.
+- Any secret storage implementation.
+- Any runtime secret values in repository data.
+
+Secret handling expectations:
+- Fixtures and provider specs must never contain live secrets.
+- Only non-sensitive sample values are allowed for test data.
+- Secret lifecycle/operations are outside this repository scope.
+
+Version baseline:
+- `webhookseal-providers v0.1.0-beta.1`
 
 ## Contributing
 
