@@ -41,7 +41,7 @@ multiple_signatures: true
       "name": "valid with multiple v1 signatures accepts any",
       "secret": "whsec_test",
       "headers": {
-        "Stripe-Signature": "t=1715000000,v1=deadbeef,v1=ec6f72c76213f4b6f826525d1470f0e0fef334f06656f6f4af8f68ee49a55c76"
+        "Stripe-Signature": "t=1715000000,v1=deadbeef,v1=1b461b1198dbfa7fa7ca8c9fbc1e3fc0b34c44b05e1722cceb250c252f9634dd"
       },
       "body": "{\"id\":\"evt_1\"}",
       "url": "",
@@ -53,7 +53,7 @@ multiple_signatures: true
       "name": "expired timestamp",
       "secret": "whsec_test",
       "headers": {
-        "Stripe-Signature": "t=1715000000,v1=ec6f72c76213f4b6f826525d1470f0e0fef334f06656f6f4af8f68ee49a55c76"
+        "Stripe-Signature": "t=1715000000,v1=1b461b1198dbfa7fa7ca8c9fbc1e3fc0b34c44b05e1722cceb250c252f9634dd"
       },
       "body": "{\"id\":\"evt_1\"}",
       "url": "",
