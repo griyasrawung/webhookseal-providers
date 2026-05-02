@@ -1,4 +1,4 @@
-module github.com/webhookseal/webhookseal-providers
+module github.com/griyasrawung/webhookseal-providers
 
 go 1.22
 

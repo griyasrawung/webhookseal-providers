@@ -8,9 +8,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/webhookseal/webhookseal-providers/internal/linter"
-	"github.com/webhookseal/webhookseal-providers/internal/runner"
-	"github.com/webhookseal/webhookseal-providers/internal/validator"
+	"github.com/griyasrawung/webhookseal-providers/internal/linter"
+	"github.com/griyasrawung/webhookseal-providers/internal/runner"
+	"github.com/griyasrawung/webhookseal-providers/internal/validator"
 )
 
 const version = "v0.1.0"

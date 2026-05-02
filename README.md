@@ -25,9 +25,9 @@ From this directory:
 
 ```bash
 go mod download
-& "C:\Program Files\Go\bin\go.exe" run ./cmd/webhookseal validate-schema --all
-& "C:\Program Files\Go\bin\go.exe" run ./cmd/webhookseal run-fixtures --all
-& "C:\Program Files\Go\bin\go.exe" run ./cmd/webhookseal lint --all
+go run ./cmd/webhookseal validate-schema --all
+go run ./cmd/webhookseal run-fixtures --all
+go run ./cmd/webhookseal lint --all
 ```
 
 Expected flow:
@@ -91,7 +91,7 @@ See `docs/fixture-format.md` for full schema guidance and error taxonomy.
 Run from repository root:
 
 ```bash
-& "C:\Program Files\Go\bin\go.exe" run ./cmd/webhookseal <command> [flags]
+go run ./cmd/webhookseal <command> [flags]
 ```
 
 Commands:
@@ -102,13 +102,12 @@ Commands:
 Common flags:
 - `--all`, process all provider or fixture files.
 - `--provider <provider_id>`, target a single provider where command supports it.
-- `--file <path>`, target a specific file where command supports it.
 
 Use `-h` on the root command or any subcommand for the current flag set:
 
 ```bash
-& "C:\Program Files\Go\bin\go.exe" run ./cmd/webhookseal -h
-& "C:\Program Files\Go\bin\go.exe" run ./cmd/webhookseal lint -h
+go run ./cmd/webhookseal -h
+go run ./cmd/webhookseal lint -h
 ```
 
 ## Contributing
